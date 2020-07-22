@@ -133,7 +133,7 @@ class LogicNormal(object):
                     logger.debug("delete_path : %s", delete_path)
                     #while start
                     while True:
-                       filepath = get_lastfile(file)
+                       filepath = LogicNormal.get_lastfile(file)
                        if filepath == '':
                           break;
                        file_info = os.path.split(filepath)
@@ -145,7 +145,7 @@ class LogicNormal(object):
                            logger.debug("### 파일이동처리 시작 ###")
                            logger.debug("이동할 파일명 : %s", file)
                            logger.debug("이동할 경로 : %s", directory)
-                           shutil.move(FILE_PATH+file, directory+'/'+file)
+                           shutil.move(filepath, directory+'/'+file_name)
                            logger.debug("### 파일이동처리 완료 ###")
                        else:
                            #no_name로 이동
@@ -153,7 +153,7 @@ class LogicNormal(object):
                      #while end
                      #폴더 삭제
                     if not delete_path == '':
-                       remove_dir(delete_path)
+                       LogicNormal.remove_dir(delete_path)
                  #폴더 처리 완료
        else:
           logger.debug("폴더 존재하지 않으므로 진행하지 않습니다.")
@@ -179,13 +179,3 @@ class LogicNormal(object):
              if path.find("@eaDir") < 0 :
                 full_filename = path+'/'+filename
        return full_filename
-
-    @staticmethod
-    def get_whichday(date):
-       r=['월','화','수','목','금','토','일']
-       year = int(date[0:2])
-       month = int(date[2:4])
-       date = int(date[4:6])
-       aday=datetime.date(year,month,date)
-       bday=aday.weekday()
-       return r[bday]
