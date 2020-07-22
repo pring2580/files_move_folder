@@ -31,7 +31,6 @@ class Logic(object):
 	'source_path' : '',
 	'download_path' : '',
 	'noname_path' : '',
-	'synoindex_path' : '',
         'schedulerInterval' : ''
     }
 
