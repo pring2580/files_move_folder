@@ -8,7 +8,7 @@
   {{ macros.setting_checkbox('auto_start', '시작시 자동실행', value=arg['auto_start'], desc='On : 시작시 자동으로 사용 설정합니다.') }}
   {{ macros.setting_input_text('source_path', '라이브러리경로', value=arg['source_path'], desc=['라이브러리경로', 'sjva']) }}
   {{ macros.setting_input_text('download_path', '다운로드 경로', value=arg['download_path'], desc=['봇 다운로드 경로(다운로드 클라이언트 경로)', 'sjva/download']) }}
-  {{ macros.setting_input_text('nodate_path', '날짜없는파일 처리 경로', value=arg['nodate_path'], desc=['제목.에피소드.날짜.릴명 에서 날짜 없는 경우 이동될 경로', 'sjva/no_date']) }}
+  {{ macros.setting_input_text('noname_path', '파일명 없는 경우 처리 경로', value=arg['noname_path'], desc=['제목.에피소드.날짜.릴명 에서 제목 없는 경우 이동될 경로', 'sjva/no_name']) }}
   {{ macros.setting_button([['global_setting_save_btn', '저장']]) }}
   </form>
   {{ macros.m_hr() }}
