@@ -58,17 +58,17 @@ class LogicNormal(object):
            if not os.path.isdir(source_path): 
                os.makedirs(source_path)
        except OSError:
-           log("Error: Creating source_path." + source_path)
+           logger.error("Error: Creating source_path." + source_path)
        try:
            if not os.path.isdir(download_path): 
                os.makedirs(download_path)
        except OSError:
-           log("Error: Creating download_path." + download_path)
+           logger.error("Error: Creating download_path." + download_path)
        try:
            if not os.path.isdir(noname_path): 
                os.makedirs(noname_path)
        except OSError:
-           log("Error: Creating noname_path." + noname_path)
+           logger.error("Error: Creating noname_path." + noname_path)
 
        #전달받은 path 경로에 / 없는 경우 예외처리
        if source_path.rfind("/")+1 != len(source_path):
@@ -100,7 +100,7 @@ class LogicNormal(object):
               #예외파일명 아니면 이동처리
               if mvBool:
                  #파일이동처리
-                 log("이동할 파일명 : %s", file)
+                 logger.debug("이동할 파일명 : %s", file)
                  #프로그램명으로 폴더 생성
                  directory = file.split('.')[0]
                  directory = ROOT_PATH+directory
@@ -108,20 +108,20 @@ class LogicNormal(object):
                      if not os.path.isdir(directory): 
                         os.makedirs(directory)
                  except OSError:
-                     log("Error: Creating directory." + directory)
+                     logger.error("Error: Creating directory." + directory)
                  
                  #log("이동처리할 경로 : %s", FILE_PATH+file)
                  #이동할 file명 조회(폴더인 경우 대비)
                  if os.path.isfile(FILE_PATH+file):
-                    log("파일 : %s", FILE_PATH+file)
+                    logger.debug(("파일 : %s", FILE_PATH+file)
                     fileName = file.split('.')[0]
-                    #log("fileDate : %s", fileDate)
+                    #logger.debug(("fileDate : %s", fileDate)
                     if os.path.isdir(ROOT_PATH+fileName):
-                       log("### 파일이동처리 시작 ###")
-                       log("이동할 파일명 : %s", file)
-                       log("이동할 경로 : %s", directory)
+                       logger.debug(("### 파일이동처리 시작 ###")
+                       logger.debug(("이동할 파일명 : %s", file)
+                       logger.debug(("이동할 경로 : %s", directory)
                        shutil.move(FILE_PATH+file, directory+'/'+file)
-                       log("### 파일이동처리 완료 ###")
+                       logger.debug(("### 파일이동처리 완료 ###")
                     else:
                        #no_name로 이동
                        shutil.move(FILE_PATH+file, NO_NAME_PATH+file)
@@ -130,7 +130,7 @@ class LogicNormal(object):
                  #else:
                     #폴더내 파일이동 후 삭제할 폴더
                     delete_path = FILE_PATH+file
-                    log("delete_path : %s", delete_path)
+                    logger.debug(("delete_path : %s", delete_path)
                     #while start
                     while True:
                        filepath = get_lastfile(file)
@@ -140,13 +140,13 @@ class LogicNormal(object):
                        file_name = file_info[1]
                        #이름에 해당하는 폴더 있으면 이동
                        fileName = file_name.split('.')[0]
-                       #log("fileDate : %s", fileDate)
+                       #logger.debug(("fileDate : %s", fileDate)
                        if os.path.isdir(ROOT_PATH+fileName):
-                           log("### 파일이동처리 시작 ###")
-                           log("이동할 파일명 : %s", file)
-                           log("이동할 경로 : %s", directory)
+                           logger.debug(("### 파일이동처리 시작 ###")
+                           logger.debug(("이동할 파일명 : %s", file)
+                           logger.debug(("이동할 경로 : %s", directory)
                            shutil.move(FILE_PATH+file, directory+'/'+file)
-                           log("### 파일이동처리 완료 ###")
+                           logger.debug(("### 파일이동처리 완료 ###")
                        else:
                            #no_name로 이동
                            shutil.move(FILE_PATH+file, NO_NAME_PATH+file)
