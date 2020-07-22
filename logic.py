@@ -30,7 +30,7 @@ class Logic(object):
 	'auto_start' : 'False',
 	'source_path' : '',
 	'download_path' : '',
-	'nodate_path' : '',
+	'noname_path' : '',
 	'synoindex_path' : '',
         'schedulerInterval' : ''
     }
