@@ -113,15 +113,15 @@ class LogicNormal(object):
                  #log("이동처리할 경로 : %s", FILE_PATH+file)
                  #이동할 file명 조회(폴더인 경우 대비)
                  if os.path.isfile(FILE_PATH+file):
-                    logger.debug(("파일 : %s", FILE_PATH+file)
+                    logger.debug("파일 : %s", FILE_PATH+file)
                     fileName = file.split('.')[0]
-                    #logger.debug(("fileDate : %s", fileDate)
+                    #logger.debug("fileDate : %s", fileDate)
                     if os.path.isdir(ROOT_PATH+fileName):
-                       logger.debug(("### 파일이동처리 시작 ###")
-                       logger.debug(("이동할 파일명 : %s", file)
-                       logger.debug(("이동할 경로 : %s", directory)
+                       logger.debug("### 파일이동처리 시작 ###")
+                       logger.debug("이동할 파일명 : %s", file)
+                       logger.debug("이동할 경로 : %s", directory)
                        shutil.move(FILE_PATH+file, directory+'/'+file)
-                       logger.debug(("### 파일이동처리 완료 ###")
+                       logger.debug("### 파일이동처리 완료 ###")
                     else:
                        #no_name로 이동
                        shutil.move(FILE_PATH+file, NO_NAME_PATH+file)
@@ -130,7 +130,7 @@ class LogicNormal(object):
                  #else:
                     #폴더내 파일이동 후 삭제할 폴더
                     delete_path = FILE_PATH+file
-                    logger.debug(("delete_path : %s", delete_path)
+                    logger.debug("delete_path : %s", delete_path)
                     #while start
                     while True:
                        filepath = get_lastfile(file)
@@ -140,13 +140,13 @@ class LogicNormal(object):
                        file_name = file_info[1]
                        #이름에 해당하는 폴더 있으면 이동
                        fileName = file_name.split('.')[0]
-                       #logger.debug(("fileDate : %s", fileDate)
+                       #logger.debug("fileDate : %s", fileDate)
                        if os.path.isdir(ROOT_PATH+fileName):
-                           logger.debug(("### 파일이동처리 시작 ###")
-                           logger.debug(("이동할 파일명 : %s", file)
-                           logger.debug(("이동할 경로 : %s", directory)
+                           logger.debug("### 파일이동처리 시작 ###")
+                           logger.debug("이동할 파일명 : %s", file)
+                           logger.debug("이동할 경로 : %s", directory)
                            shutil.move(FILE_PATH+file, directory+'/'+file)
-                           logger.debug(("### 파일이동처리 완료 ###")
+                           logger.debug("### 파일이동처리 완료 ###")
                        else:
                            #no_name로 이동
                            shutil.move(FILE_PATH+file, NO_NAME_PATH+file)
