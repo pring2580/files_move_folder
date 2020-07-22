@@ -44,7 +44,7 @@ class LogicNormal(object):
             #logger.debug("source_path >> %s", source_path);
             #logger.debug("download_path >> %s", download_path);
             #logger.debug("noname_path >> %s", noname_path);
-	    if source_path != '' and download_path != '' and noname_path != '':
+            if source_path != '' and download_path != '' and noname_path != '':
                LogicNormal.file_move(source_path, download_path, noname_path)
         except Exception as e:
             logger.error('Exception:%s', e)
@@ -53,6 +53,23 @@ class LogicNormal(object):
     @staticmethod
     def file_move(source_path, download_path, noname_path):
        logger.debug("=========== SCRIPT START ===========")
+       #초기 폴더 생성
+       try:
+           if not os.path.isdir(source_path): 
+               os.makedirs(source_path)
+       except OSError:
+           log("Error: Creating source_path." + source_path)
+       try:
+           if not os.path.isdir(download_path): 
+               os.makedirs(download_path)
+       except OSError:
+           log("Error: Creating download_path." + download_path)
+       try:
+           if not os.path.isdir(noname_path): 
+               os.makedirs(noname_path)
+       except OSError:
+           log("Error: Creating noname_path." + noname_path)
+
        #전달받은 path 경로에 / 없는 경우 예외처리
        if source_path.rfind("/")+1 != len(source_path):
           source_path = source_path+'/'
@@ -114,7 +131,7 @@ class LogicNormal(object):
                     #폴더내 파일이동 후 삭제할 폴더
                     delete_path = FILE_PATH+file
                     log("delete_path : %s", delete_path)
-       	           #while start
+                    #while start
                     while True:
                        filepath = get_lastfile(file)
                        if filepath == '':
@@ -133,8 +150,8 @@ class LogicNormal(object):
                        else:
                            #no_name로 이동
                            shutil.move(FILE_PATH+file, NO_NAME_PATH+file)
-              	     #while end
-              	     #폴더 삭제
+                     #while end
+                     #폴더 삭제
                     if not delete_path == '':
                        remove_dir(delete_path)
                  #폴더 처리 완료
