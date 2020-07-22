@@ -44,7 +44,7 @@ menu = {
 
 plugin_info = {
     'version' : '0.1',
-    'name' : 'files_move_cate',
+    'name' : 'files_move_folder',
     'category_name' : 'fileprocess',
     'developer' : 'pring',
     'description' : '파일정리(폴더별)',
